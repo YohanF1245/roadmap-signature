@@ -1,56 +1,49 @@
-# Roadmap - Projet Signature
+# Roadmap - Bot Discord Signature
 
-## 1. API
-- [ ] Implémenter les endpoints CRUD pour les promotions
-  - Tests: Validation des requêtes HTTP, gestion des erreurs, conformité des données
-- [ ] Développer l'endpoint de récupération des promotions
-  - Tests: Format des données (UUID/nom), pagination, performance
-- [ ] Créer l'endpoint des données détaillées des promotions
-  - Tests: Structure JSON, validation des snowflakes Discord, intégrité des relations
+## 1. Intégration API
+- [ ] Implémenter la récupération des promotions
+  - Tests: Format des données, gestion des erreurs HTTP, mock API
+- [ ] Implémenter la récupération des détails d'une promotion
+  - Tests: Validation des snowflakes, structure des données, mock API
+- [ ] Gérer les erreurs et retries API
+  - Tests: Timeout, retry policy, rate limiting
 
-## 2. Bot Discord
-### 2.1 Fonctionnalités Core
-- [ ] Mettre en place la communication dans les canaux
-  - Tests: Permissions, rate limiting, gestion des erreurs Discord
-- [ ] Implémenter le système de messages privés
-  - Tests: Délivrance des messages, gestion des DMs fermés
-- [ ] Développer la gestion des fils de discussion
-  - Tests: Création/fermeture des fils, permissions
-- [ ] Configurer l'API HTTP listener
-  - Tests: Sécurité des endpoints, validation des payloads
-- [ ] Implémenter le système de fichiers (config/logs)
-  - Tests: Persistance, concurrence, rotation des logs
+## 2. Interface Discord.js
+- [ ] Créer le select menu des promotions
+  - Tests: Rendu des options, événements de sélection, timeouts
+- [ ] Créer les embeds de messages
+  - Tests: Format des embeds, limites Discord, mise en page
+- [ ] Implémenter les boutons d'action
+  - Tests: États des boutons, handlers d'événements, cooldowns
+- [ ] Gérer les permissions des composants
+  - Tests: Rôles utilisateurs, permissions Discord, états désactivés
 
-### 2.2 Gestion des Signatures
-- [ ] Créer l'interface de création des canaux signature
-  - Tests: Validation des inputs, gestion des permissions
-- [ ] Développer le système Staff → Apprenants
-  - Tests: Sélection multiple, validation du timer, notifications
-- [ ] Implémenter le système Apprenants → Staff
-  - Tests: Validation des demandes, gestion du timer
-- [ ] Mettre en place les notifications
-  - Tests: Délivrance, format, timing
+## 3. Système de Signature
+- [ ] Implémenter le flux formateur → apprenants
+  - Tests: Sélection multiple, validation des rôles, messages
+- [ ] Implémenter le flux apprenant → formateur
+  - Tests: Sélection unique, validation des rôles, messages
+- [ ] Gérer les timers anti-spam
+  - Tests: Délais, persistance, reset des timers
+- [ ] Gérer les notifications privées
+  - Tests: DMs fermés, file d'attente, confirmation
 
-### 2.3 Configuration et Monitoring
-- [ ] Implémenter le système de configuration
-  - Tests: Parsing du fichier config, validation des données
-- [ ] Développer le système de logging
-  - Tests: Format des logs, rotation, performance
-- [ ] Créer le système de gestion des états
+## 4. Gestion des Canaux
+- [ ] Implémenter la création des canaux
+  - Tests: Permissions Discord, nommage, catégories
+- [ ] Configurer les permissions
+  - Tests: Hiérarchie des rôles, overwrites, héritage
+- [ ] Gérer les états (actif/pause)
   - Tests: Transitions d'états, persistance, concurrence
+- [ ] Créer les messages d'accueil
+  - Tests: Formatage, mentions, boutons initiaux
 
-## 3. Dashboard
-- [ ] Développer l'interface d'administration
-  - Tests: Responsive design, accessibilité
-- [ ] Implémenter la visualisation des logs
-  - Tests: Filtrage, pagination, performance
-- [ ] Créer l'interface de gestion des configurations
-  - Tests: Validation des inputs, persistance des changements
-
-## 4. Documentation
-- [ ] Rédiger la documentation technique
-  - Tests: Validation des exemples de code
-- [ ] Créer le guide d'utilisation
-  - Tests: Vérification des scénarios d'utilisation
-- [ ] Documenter l'API
-  - Tests: Validation des exemples d'appels API
+## 5. Monitoring
+- [ ] Implémenter le système de logs
+  - Tests: Format des logs, rotation, niveaux de log
+- [ ] Gérer les erreurs Discord et API
+  - Tests: Types d'erreurs, recovery, fallbacks
+- [ ] Mettre en place les retries
+  - Tests: Backoff exponentiel, limites de tentatives
+- [ ] Formater les messages d'erreur utilisateur
+  - Tests: Clarté des messages, localisation, contexte
